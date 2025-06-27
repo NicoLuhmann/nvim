@@ -1,6 +1,6 @@
 return {
 	"zbirenbaum/copilot.lua",
-	enable = NVIM_MODE == "max",
+	enabled = NVIM_MODE == "max",
 	cmd = "Copilot",
 	event = "InsertEnter", -- Load when entering insert mode
 	cond = not vim.g.vscode,

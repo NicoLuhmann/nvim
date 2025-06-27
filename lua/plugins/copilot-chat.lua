@@ -1,6 +1,6 @@
 return {
 	"CopilotC-Nvim/CopilotChat.nvim",
-	enable = NVIM_MODE == "max",
+	enabled = NVIM_MODE == "max",
 	cond = not vim.g.vscode,
 	dependencies = {
 		{ "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua

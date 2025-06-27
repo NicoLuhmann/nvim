@@ -1,6 +1,6 @@
 return {
 	"folke/lazydev.nvim",
-	enable = NVIM_MODE ~= "min",
+	enabled = NVIM_MODE ~= "min",
 	ft = "lua",
 	opts = {
 		library = {
