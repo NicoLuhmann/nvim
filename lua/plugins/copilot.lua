@@ -1,9 +1,8 @@
 return {
 	"zbirenbaum/copilot.lua",
-	enabled = NVIM_MODE == "max",
+	cond = not vim.g.vscode and (NVIM_MODE == "max"),
 	cmd = "Copilot",
 	event = "InsertEnter", -- Load when entering insert mode
-	cond = not vim.g.vscode,
 	opts = {
 		panel = {
 			enabled = false, -- Disable the separate panel if you don't want it

@@ -1,7 +1,6 @@
 return {
   "mason-org/mason-lspconfig.nvim",
-	enabled = NVIM_MODE ~= "min",
-  cond = not vim.g.vscode,
+	cond = not vim.g.vscode and (NVIM_MODE ~= "min"),
   dependencies = {
     "williamboman/mason.nvim",
     "neovim/nvim-lspconfig",

@@ -1,7 +1,6 @@
 return {
 	"CopilotC-Nvim/CopilotChat.nvim",
-	enabled = NVIM_MODE == "max",
-	cond = not vim.g.vscode,
+	cond = not vim.g.vscode and (NVIM_MODE == "max"),
 	dependencies = {
 		{ "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
 		{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
