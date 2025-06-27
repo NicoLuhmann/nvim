@@ -5,7 +5,7 @@ return {
     "BufReadPre",
     "BufNewFile"
   },
-  opts = {
-
-  },
+  config = function()
+    require('lint').linters_by_ft = {}
+  end,
 }
