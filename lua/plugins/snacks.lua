@@ -84,6 +84,13 @@ return {
 			desc = "Open a new terminal window",
 		},
 		{
+			"<leader>n",
+			function()
+				Snacks.picker.notifications()
+			end,
+			desc = "Notifications",
+		},
+		{
 			"<leader>d",
 			function()
 				Snacks.picker.diagnostics()
