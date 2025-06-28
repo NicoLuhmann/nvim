@@ -28,6 +28,9 @@ return {
 			"typescript",
 			"yaml",
 		},
-		auto_install = true,
+		auto_install = false,
 	},
+  config = function (_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }
