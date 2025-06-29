@@ -4,7 +4,6 @@ return {
   dependencies = {
     "folke/lazydev.nvim",
     "mason-org/mason.nvim",
-    "j-hui/fidget.nvim",
   },
   keys = {
     { "<leader>li", "<cmd>LspInfo<cr>", desc = "LSP Info" },
