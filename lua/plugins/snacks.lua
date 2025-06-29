@@ -5,6 +5,24 @@ return {
 	lazy = false,
 	opts = {
 		bigfile = { enabled = true },
+		dashboard = {
+      preset = {
+        keys = {
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "e", desc = "Explorer", action = ":lua Snacks.explorer()" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "h", desc = "Health Check", action = ":checkhealth" },
+          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        },
+      },
+			sections = {
+				{ section = "keys", gap = 1, padding = 1 },
+				{ section = "startup" },
+			},
+		},
 		explorer = { enabled = true },
 		indent = { enabled = true },
 		lazygit = { enabled = true },
@@ -15,12 +33,12 @@ return {
 			ignored = true,
 			ui_select = true,
 			sources = {
-        explorer = {
-          layout = {
-            preview = true,
-            layout = { position = "right" }
-          },
-        },
+				explorer = {
+					layout = {
+						preview = true,
+						layout = { position = "right" },
+					},
+				},
 				files = {
 					hidden = true,
 					ignored = true,
