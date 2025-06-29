@@ -23,11 +23,6 @@ return {
 		require("mini.comment").setup({})
 		require("mini.ai").setup({})
 		require("mini.move").setup({})
-		require("mini.jump").setup({
-			delay = {
-				highlight = 10000000,
-			},
-		})
 		require("mini.splitjoin").setup({})
 
 		if not vim.g.vscode then

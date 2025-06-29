@@ -4,14 +4,16 @@ return {
 	cond = not vim.g.vscode,
 	lazy = false,
 	opts = {
+		bigfile = { enabled = true },
 		explorer = { enabled = true },
 		indent = { enabled = true },
 		lazygit = { enabled = true },
+		notifier = { enabled = true },
 		picker = {
 			enabled = true,
 			hidden = true,
 			ignored = true,
-      ui_select = true,
+			ui_select = true,
 			sources = {
 				files = {
 					hidden = true,
@@ -22,9 +24,8 @@ return {
 				},
 			},
 		},
-		terminal = {
-			enabled = true,
-		},
+		statuscolumn = { enabled = true },
+		terminal = { enabled = true },
 	},
 	keys = {
 		{
@@ -63,7 +64,7 @@ return {
 			desc = "Find Files",
 		},
 		{
-			"<leader>g",
+			"<leader>ff",
 			function()
 				Snacks.picker.grep()
 			end,
