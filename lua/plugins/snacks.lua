@@ -15,6 +15,12 @@ return {
 			ignored = true,
 			ui_select = true,
 			sources = {
+        explorer = {
+          layout = {
+            preview = true,
+            layout = { position = "right" }
+          },
+        },
 				files = {
 					hidden = true,
 					ignored = true,
