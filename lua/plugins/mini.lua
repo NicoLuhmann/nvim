@@ -38,6 +38,10 @@ return {
 					{ mode = "n", keys = "g" },
 					{ mode = "x", keys = "g" },
 
+          -- [,] keys
+          { mode = "n", keys = "]"},
+          { mode = "n", keys = "["},
+
 					-- Marks
 					{ mode = "n", keys = "'" },
 					{ mode = "n", keys = "`" },
