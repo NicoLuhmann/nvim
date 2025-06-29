@@ -8,11 +8,11 @@ return {
 		dashboard = {
 			preset = {
 				keys = {
-					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "p", desc = "Pick File", action = ":lua Snacks.dashboard.pick('files')" },
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 					{
 						icon = " ",
-						key = "g",
+						key = "f",
 						desc = "Find Text",
 						action = ":lua Snacks.dashboard.pick('live_grep')",
 					},
@@ -134,7 +134,7 @@ return {
 			desc = "Notifications",
 		},
 		{
-			"<leader>d",
+			"<leader>dd",
 			function()
 				Snacks.picker.diagnostics()
 			end,

@@ -11,12 +11,12 @@ return {
 			},
 			search_method = "cover_or_next",
 			mappings = {
-				add = "<leader>sa",
-				delete = "<leader>sd",
+				add = "<leader>ys",
+				delete = "<leader>ds",
 				find = "",
 				find_left = "",
-				highlight = "<leader>sh",
-				replace = "<leader>sr",
+				highlight = "",
+				replace = "<leader>rs",
 				update_n_lines = "",
 			},
 		})
