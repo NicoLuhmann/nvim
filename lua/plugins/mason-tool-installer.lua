@@ -11,6 +11,7 @@ return {
 			"isort", -- python formatter
 			"black", -- python formatter
 			"clang-format", -- c, cpp formatter
+      "ruff", --python linter
 			-- "pylint", -- python linter
 			-- "eslint_d", -- js linter
 		},
