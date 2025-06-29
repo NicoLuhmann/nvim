@@ -69,11 +69,6 @@ return {
 			})
 			require("mini.icons").setup({})
 			require("mini.pairs").setup({})
-			require("mini.git").setup({})
-			require("mini.diff").setup({})
-			require("mini.statusline").setup({})
-			require("mini.tabline").setup({})
-			require("mini.notify").setup({})
 			require("mini.cursorword").setup({})
 		end
 	end,

@@ -5,7 +5,7 @@ return {
 	opts = {
 		library = {
 			{ path = "{3rd}/luv-library", words = { "vim%.uv" } },
-			{ path = "dev-files", words = { "Snacks" } },
+			{ path = "plugins", words = { "Snacks" } },
 		},
 	},
 }

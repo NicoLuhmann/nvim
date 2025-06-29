@@ -43,11 +43,11 @@ return {
 			desc = "File Explorer",
 		},
 		{
-			"<leader>b",
+			"<leader>bb",
 			function()
 				Snacks.picker.buffers()
 			end,
-			desc = "Buffers",
+			desc = "Pick Buffer",
 		},
 		{
 			"<leader><leader>",
