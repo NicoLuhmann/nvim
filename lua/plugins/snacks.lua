@@ -42,7 +42,7 @@ return {
 			},
 		},
 		explorer = { enabled = true },
-    enabled = { enabled = NVIM_MODE == "max" },
+    image = { enabled = NVIM_MODE == "max" },
 		indent = { enabled = true },
 		lazygit = { enabled = true },
 		notifier = { enabled = true },
