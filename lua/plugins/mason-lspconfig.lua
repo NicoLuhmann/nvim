@@ -13,6 +13,7 @@ return {
       "lua_ls", -- lua language server
       "pyright", -- python language server
       "jsonls",
+      "marksman",
       "yamlls",
       "bashls",
       "cmake",
