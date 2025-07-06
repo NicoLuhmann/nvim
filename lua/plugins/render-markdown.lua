@@ -9,7 +9,7 @@ return {
     require("render-markdown").setup({
       latex = { enabled = false },
       completions = {
-        blink = { enabled = true }
+        lsp = { enabled = true }
       },
     })
   end

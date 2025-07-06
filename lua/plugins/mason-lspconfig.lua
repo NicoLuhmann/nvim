@@ -2,7 +2,7 @@ return {
   "mason-org/mason-lspconfig.nvim",
 	cond = not vim.g.vscode and (NVIM_MODE ~= "min"),
   dependencies = {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     "neovim/nvim-lspconfig",
   },
   opts = {
