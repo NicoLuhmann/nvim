@@ -18,6 +18,7 @@ return {
       "bashls",
       "cmake",
       "lemminx", -- xml
+      "texlab",
     },
     automatic_enable = true,
   },

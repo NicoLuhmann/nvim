@@ -5,10 +5,12 @@ return {
 	opts = {
 		highlight = {
 			enable = not vim.g.vscode, -- Disable highlighting in VSCode
-			additional_vim_regex_highlighting = false,
+			additional_vim_regex_highlighting = { "latex" },
+      disable = { "latex" },
 		},
 		indent = {
 			enable = not vim.g.vscode, -- Disable indenting in VSCode
+      disable = { "latex" },
 		},
 		ensure_installed = {
 			"bash",
