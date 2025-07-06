@@ -16,7 +16,7 @@ return {
 				find = "",
 				find_left = "",
 				highlight = "",
-				replace = "<leader>rs",
+				replace = "<leader>cs",
 				update_n_lines = "",
 			},
 		})
@@ -33,10 +33,15 @@ return {
 					-- Leader triggers
 					{ mode = "n", keys = "<Leader>" },
 					{ mode = "x", keys = "<Leader>" },
+					{ mode = "n", keys = "<LocalLeader>" },
+					{ mode = "x", keys = "<LocalLeader>" },
 
 					-- `g` key
 					{ mode = "n", keys = "g" },
 					{ mode = "x", keys = "g" },
+
+          -- `d` key
+					{ mode = "n", keys = "d" },
 
           -- [,] keys
           { mode = "n", keys = "]"},
