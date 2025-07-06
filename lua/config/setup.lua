@@ -34,6 +34,7 @@ else
 	end
 	vim.cmd.colorscheme("catppuccin")
 	vim.opt.nu = true
+  vim.opt.conceallevel = 2
 	vim.opt.relativenumber = true
 	vim.opt.cursorline = true
 	vim.opt.smartindent = true
