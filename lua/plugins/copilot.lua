@@ -28,4 +28,7 @@ return {
 		-- Ensure no copilot-cmp specific options are here.
 		-- If you previously used copilot-cmp, make sure it's not loaded/enabled.
 	},
+  keys = {
+    {"<leader>ct", function() require("copilot.suggestion").toggle_auto_trigger() end, desc = "Toggle Copilot Auto Trigger"},
+  },
 }
