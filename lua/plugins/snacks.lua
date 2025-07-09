@@ -4,7 +4,6 @@ return {
 	cond = not vim.g.vscode,
 	lazy = false,
 	opts = {
-		bigfile = { enabled = true },
 		dashboard = {
 			preset = {
 				keys = {

@@ -5,43 +5,41 @@ return {
 	opts = {
 		highlight = {
 			enable = not vim.g.vscode, -- Disable highlighting in VSCode
-			additional_vim_regex_highlighting = { "latex" },
-      disable = { "latex" },
+			additional_vim_regex_highlighting = false,
 		},
 		indent = {
 			enable = not vim.g.vscode, -- Disable indenting in VSCode
-      disable = { "latex" },
 		},
 		ensure_installed = {
 			"bash",
 			"c",
 			"cmake",
 			"cpp",
-      "css",
-      "diff",
+			"css",
+			"diff",
 			"dockerfile",
-      "html",
+			"html",
 			"javascript",
 			"json",
-      "latex",
+			"latex",
 			"lua",
 			"markdown",
 			"markdown_inline",
-      "norg",
+			"norg",
 			"python",
-      "regex",
-      "scss",
-      "svelte",
+			"regex",
+			"scss",
+			"svelte",
 			"toml",
-      "tsx",
-      "typst",
+			"tsx",
+			"typst",
 			"typescript",
-      "vue",
+			"vue",
 			"yaml",
 		},
 		auto_install = false,
 	},
-  config = function (_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-  end,
+	config = function(_, opts)
+		require("nvim-treesitter.configs").setup(opts)
+	end,
 }

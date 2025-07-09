@@ -1,12 +1,8 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = (NVIM_MODE ~=  "min") and {
+	dependencies = {
 		"rafamadriz/friendly-snippets",
-		"folke/lazydev.nvim",
-		"mason-org/mason-lspconfig.nvim",
-	} or {
-		"rafamadriz/friendly-snippets",
-  },
+	},
 	cond = not vim.g.vscode, -- disable in vscode
 	version = "1.*",
 	opts = {
@@ -50,24 +46,11 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = (NVIM_MODE ~= "min") and {
-			  "lazydev",
-			  "lsp",
-			  "path",
-			  "snippets",
-			  "buffer"
-			} or {
-        "path",
-        "snippets",
-        "buffer"
-      },
-			providers = (NVIM_MODE ~= "min") and {
-				lazydev = {
-					name = "LazyDev",
-					module = "lazydev.integrations.blink",
-					score_offset = 100,
-				},
-			} or {},
+			default = {
+				"path",
+				"snippets",
+				"buffer",
+			},
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
