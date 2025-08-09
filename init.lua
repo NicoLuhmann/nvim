@@ -60,6 +60,7 @@ if not vim.g.vscode then
   require('mini.files').setup()
   require('mini.git').setup()
   require('mini.diff').setup()
+  require('mini.notify').setup()
   require('mini.icons').setup()
   require('mini.statusline').setup()
   require('mini.tabline').setup()
