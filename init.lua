@@ -51,31 +51,26 @@ require('mini.surround').setup()
 require('mini.pairs').setup()
 require('mini.jump').setup()
 require('mini.jump2d').setup()
+require('mini.splitjoin').setup()
 
 -- Terminal-only plugins (disabled in VSCode)
 if not vim.g.vscode then
   require('mini.pick').setup()
+  require('mini.cursorword').setup()
   require('mini.files').setup()
+  require('mini.git').setup()
+  require('mini.diff').setup()
+  require('mini.icons').setup()
   require('mini.statusline').setup()
   require('mini.tabline').setup()
   require('mini.starter').setup()
   require('mini.notify').setup()
-  require('mini.completion').setup({
-    lsp_completion = {
-      source_func = 'completefunc',
-      auto_setup = false,
-    },
-    mappings = {
-      force_twostep = '<C-Space>',
-      force_fallback = '<A-Space>',
-    },
-  })
+  require('mini.completion').setup()
   
   -- Terminal-only keymaps
   vim.keymap.set('n', '<leader>ff', '<cmd>Pick files<cr>', { desc = 'Find files' })
   vim.keymap.set('n', '<leader>fg', '<cmd>Pick grep_live<cr>', { desc = 'Live grep' })
   vim.keymap.set('n', '<leader>fb', '<cmd>Pick buffers<cr>', { desc = 'Find buffers' })
-  vim.keymap.set('n', '<leader>fo', '<cmd>Pick oldfiles<cr>', { desc = 'Recent files' })
   
   -- File explorer
   vim.keymap.set('n', '<leader>e', function()
