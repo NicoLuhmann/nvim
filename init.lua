@@ -91,12 +91,8 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
 
--- Better paste behavior
+-- Replace without yanking
 vim.keymap.set('x', '<leader>p', [["_dP]])
-
--- System clipboard
-vim.keymap.set({'n', 'v'}, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
 
 -- Delete without yanking
 vim.keymap.set({'n', 'v'}, '<leader>d', [["_d]])
