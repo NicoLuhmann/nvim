@@ -1,26 +1,59 @@
--- install mini.nvim if not installed
-local path_package = vim.fn.stdpath('data') .. '/site'
-local mini_path = path_package .. '/pack/deps/start/mini.nvim'
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local clone_cmd = {
-    'git', 'clone', '--filter=blob:none',
-    'https://github.com/echasnovski/mini.nvim', mini_path
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { '\nPress any key to exit...' },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
+vim.opt.rtp:prepend(lazypath)
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- Setup lazy.nvim
+require('lazy').setup({
+  spec = {
+    { 'nvim-mini/mini.nvim', version = false },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000, cond = not vim.g.vscode },
+    {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      ---@type Flash.Config
+      opts = {},
+      -- stylua: ignore
+      keys = {
+        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+        { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+        { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+        { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+        { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      },
+    }
+    -- add your plugins here
+  },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "catppuccin" } },
+  -- automatically check for plugin updates
+  checker = { enabled = false },
+})
 
 -- disable unused providers
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
-
--- Set leader key early
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 -- Basic Vim Settings
 vim.o.number = true
@@ -43,18 +76,31 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 
--- Mini.nvim plugins that work in both VSCode and terminal
+-- Set up 'mini.deps' (customize to your liking)
+require('mini.deps').setup({ path = { package = path_package } })
+local add = MiniDeps.add
 
+-- Mini.nvim plugins that work in both VSCode and terminal
 require('mini.ai').setup()
 require('mini.comment').setup()
-require('mini.surround').setup()
+require('mini.surround').setup({
+  mappings = {
+    add = '<leader>sa', -- Add surrounding in Normal and Visual modes
+    delete = '<leader>sd', -- Delete surrounding
+    find = '<leader>sf', -- Find surrounding (to the right)
+    find_left = '<leader>sF', -- Find surrounding (to the left)
+    highlight = '<leader>sh', -- Highlight surrounding
+    replace = '<leader>sr', -- Replace surrounding
+  }
+})
 require('mini.pairs').setup()
-require('mini.jump').setup()
-require('mini.jump2d').setup()
 require('mini.splitjoin').setup()
+
 
 -- Terminal-only plugins (disabled in VSCode)
 if not vim.g.vscode then
+  vim.cmd.colorscheme "catppuccin"
+  -- Mini.nvim
   require('mini.pick').setup()
   require('mini.cursorword').setup()
   require('mini.files').setup()
@@ -63,7 +109,6 @@ if not vim.g.vscode then
   require('mini.notify').setup()
   require('mini.icons').setup()
   require('mini.statusline').setup()
-  require('mini.tabline').setup()
   require('mini.starter').setup()
   require('mini.notify').setup()
   require('mini.completion').setup()
