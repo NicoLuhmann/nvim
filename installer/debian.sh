@@ -1,7 +1,16 @@
 #!/bin/bash
+set -e
+
+# Detect if running as root
+if [[ $EUID -eq 0 ]]; then
+  SUDO=""
+else
+  SUDO="sudo"
+fi
+
 # Install dependencies
-sudo apt-get update
-sudo apt-get install -y \
+$SUDO apt-get update
+$SUDO apt-get install -y \
   curl \
   git \
   wget \
@@ -32,16 +41,16 @@ if [[ -n "${nvim_archives[$arch]}" && -n "${lazygit_archives[$arch]}" ]]; then
   LAZYGIT_ARCHIVE="${lazygit_archives[$arch]}"
   curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_${LAZYGIT_ARCHIVE}.tar.gz"
   tar xf lazygit.tar.gz lazygit
-  sudo install lazygit -D -t /usr/local/bin/
+  $SUDO install lazygit -D -t /usr/local/bin/
   rm lazygit.tar.gz lazygit
   echo "Lazygit installed successfully."
   
   # Install neovim
   NVIM_ARCHIVE="${nvim_archives[$arch]}"
   curl -LO "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/${NVIM_ARCHIVE}.tar.gz"
-  sudo rm -rf "/opt/${NVIM_ARCHIVE}"
-  sudo tar -C /opt -xzf "${NVIM_ARCHIVE}.tar.gz"
-  sudo ln -sf "/opt/${NVIM_ARCHIVE}/bin/nvim" /usr/local/bin/nvim
+  $SUDO rm -rf "/opt/${NVIM_ARCHIVE}"
+  $SUDO tar -C /opt -xzf "${NVIM_ARCHIVE}.tar.gz"
+  $SUDO ln -sf "/opt/${NVIM_ARCHIVE}/bin/nvim" /usr/local/bin/nvim
   rm "${NVIM_ARCHIVE}.tar.gz"
 else
   echo "Unsupported architecture: $arch"
