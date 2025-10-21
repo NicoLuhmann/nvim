@@ -1,6 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "master",
+	branch = "main",
+	version = "false",
 	lazy = false,
 	build = ":TSUpdate",
 	opts = {
@@ -13,12 +14,12 @@ return {
 		ensure_installed = {
 			"markdown",
 			"markdown_inline",
-      "regex",
-      "bash"
+			"regex",
+			"bash",
 		},
-		auto_install = false,
+		auto_install = true,
 	},
-	config = function (_, opts)
-		require("nvim-treesitter.configs").setup(opts)
+	config = function(_, opts)
+		require("nvim-treesitter").setup(opts)
 	end,
 }
