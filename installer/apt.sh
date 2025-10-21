@@ -68,3 +68,17 @@ echo ""
 echo "--------------------------------------------------------"
 echo "Neovim setup complete!"
 echo "--------------------------------------------------------"
+
+if [[ -t 0 ]]; then
+  read -p "Do you want to install OpenCode? (y/n): " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Installing OpenCode..."
+    curl -fsSL https://opencode.ai/install | bash
+    echo "OpenCode installed successfully."
+  else
+    echo "Skipping OpenCode installation."
+  fi
+else
+  echo "Non-interactive terminal detected. Skipping OpenCode installation."
+fi
