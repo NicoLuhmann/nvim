@@ -19,6 +19,7 @@ $SUDO apt-get install -y \
   ripgrep \
   build-essential \
   gzip \
+  unzip \
   tar
 
 # Install Neovim
