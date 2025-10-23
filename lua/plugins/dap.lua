@@ -96,32 +96,42 @@ return {
             },
         }
         
-        dap.configurations.cpp = {
-            {
-                name = "Launch file",
-                type = "cppdbg",
-                request = "launch",
-                program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                stopAtEntry = true,
-            },
-            {
-                name = 'Attach to gdbserver :1234',
-                type = 'cppdbg',
-                request = 'launch',
-                MIMode = 'gdb',
-                miDebuggerServerAddress = 'localhost:1234',
-                miDebuggerPath = '/usr/bin/gdb',
-                cwd = '${workspaceFolder}',
-                program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-            },
-        }
+        if not dap.adapters["codelldb"] then
+            dap.adapters["codelldb"] = {
+                type = "server",
+                host = "localhost",
+                port = "${port}",
+                executable = {
+                    command = "codelldb",
+                    args = {
+                        "--port",
+                        "${port}",
+                    },
+                },
+            }
+        end
 
-        -- Automatically open/close DAP UI
+        for _, lang in ipairs({ "c", "cpp" }) do
+            dap.configurations[lang] = {
+                {
+                    type = "codelldb",
+                    request = "launch",
+                    name = "Launch file",
+                    program = function()
+                        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                    end,
+                    cwd = "${workspaceFolder}",
+                },
+                {
+                    type = "codelldb",
+                    request = "attach",
+                    name = "Attach to process",
+                    pid = require("dap.utils").pick_process,
+                    cwd = "${workspaceFolder}",
+                },
+            }
+        end
+
         dap.listeners.after.event_initialized['dapui_config'] = dapui.open
         dap.listeners.before.event_terminated['dapui_config'] = dapui.close
         dap.listeners.before.event_exited['dapui_config'] = dapui.close
