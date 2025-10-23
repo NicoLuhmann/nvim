@@ -74,7 +74,6 @@ return {
 		},
 		quickfiles = { enabled = true },
 		statuscolumn = { enabled = true },
-		terminal = { enabled = true },
 	},
 	keys = {
 		{
