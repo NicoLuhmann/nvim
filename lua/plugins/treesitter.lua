@@ -1,25 +1,27 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	branch = "main",
-	version = "false",
-	lazy = false,
 	build = ":TSUpdate",
-	opts = {
-		highlight = {
-			enable = not vim.g.vscode, -- Disable highlighting in VSCode
-		},
-		indent = {
-			enable = not vim.g.vscode, -- Disable indenting in VSCode
-		},
-		ensure_installed = {
+	lazy = false,
+	config = function()
+		require("nvim-treesitter").install({
 			"markdown",
 			"markdown_inline",
 			"regex",
 			"bash",
-		},
-		auto_install = true,
-	},
-	config = function(_, opts)
-		require("nvim-treesitter").setup(opts)
+		})
+
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function()
+				if not vim.g.vscode then
+					local ok = pcall(vim.treesitter.start)
+					if ok then
+						vim.wo.foldmethod = "expr"
+						vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+						vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end
+				end
+			end,
+		})
 	end,
 }
