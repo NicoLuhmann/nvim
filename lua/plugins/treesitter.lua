@@ -5,10 +5,20 @@ return {
 	lazy = false,
 	config = function()
 		require("nvim-treesitter").install({
+			"bash",
+			"c",
+			"cpp",
+			"cmake",
+			"comment",
+			"json",
+			"lua",
 			"markdown",
 			"markdown_inline",
+			"python",
 			"regex",
-			"bash",
+			"toml",
+			"yaml",
+			"xml",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
