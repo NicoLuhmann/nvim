@@ -1,13 +1,48 @@
 return {
-	"mason-org/mason.nvim",
-  opts = {
-    ui = {
-      border = "rounded", -- set border style
-      icons = {
-        package_installed = "✓",
-        package_pending = "➜",
-        package_uninstalled = "✗",
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      -- list of servers for mason to install
+      ensure_installed = {
+        "bashls",
+        "clangd",
+        "lua_ls",
+        "pyright",
       },
+    },
+    dependencies = {
+      {
+        "williamboman/mason.nvim",
+        opts = {
+          ui = {
+            icons = {
+              package_installed = "✓",
+              package_pending = "➜",
+              package_uninstalled = "✗",
+            },
+          },
+        },
+      },
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        "black",
+        "clang-format",
+        "gersemi",
+        "isort",
+        "prettierd",
+        "prettier",
+        "stylua",
+        "tree-sitter-cli",
+        "xmlformatter",
+      },
+    },
+    dependencies = {
+      "williamboman/mason.nvim",
     },
   },
 }
