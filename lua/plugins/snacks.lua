@@ -136,6 +136,13 @@ return {
 			desc = "Buffers",
 		},
 		{
+			"<leader>fu",
+			function()
+				Snacks.picker.buffers({ modified = true })
+			end,
+			desc = "Unsaved Buffers",
+		},
+		{
 			"<leader>fc",
 			function()
 				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
