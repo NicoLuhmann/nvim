@@ -28,12 +28,16 @@ arch=$(uname -m)
 
 declare -A nvim_archives=(
   ["x86_64"]="nvim-linux-x86_64"
+  ["amd64"]="nvim-linux-x86_64"
   ["aarch64"]="nvim-linux-arm64"
+  ["arm64"]="nvim-linux-arm64"
 )
 
 declare -A lazygit_archives=(
   ["x86_64"]="Linux_x86_64"
+  ["amd64"]="Linux_x86_64"
   ["aarch64"]="Linux_arm64"
+  ["arm64"]="Linux_arm64"
 )
 
 if [[ -n "${nvim_archives[$arch]}" && -n "${lazygit_archives[$arch]}" ]]; then
