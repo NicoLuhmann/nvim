@@ -14,6 +14,7 @@ return {
 			json = { "prettierd", "prettier", stop_after_first = true },
 			lua = { "stylua" },
 			python = { "isort", "black" },
+      sh = { "shfmt" },
 			xml = { "xmlformatter" },
 			yaml = { "prettierd", "prettier", stop_after_first = true },
 		},

@@ -47,6 +47,7 @@ return {
 				"isort",
 				"prettierd",
 				"prettier",
+        "shfmt",
 				"stylua",
 				"tree-sitter-cli",
 				"xmlformatter",
