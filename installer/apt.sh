@@ -65,7 +65,7 @@ else
   if [[ -z "${nvim_archives[$arch]}" ]]; then
     echo "No Neovim archive available for $arch"
   fi
-  exit 1
+  return 1 2>/dev/null || exit 1
 fi
 
 echo ""
