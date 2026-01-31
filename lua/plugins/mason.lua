@@ -1,12 +1,14 @@
 return {
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
+		cond = not vim.g.vscode,
 		event = "VeryLazy",
 		priority = 1000,
 		opts = {},
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		cond = not vim.g.vscode,
 		opts = {
 			-- list of servers for mason to install
 			ensure_installed = {
@@ -39,6 +41,7 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		cond = not vim.g.vscode,
 		opts = {
 			ensure_installed = {
 				"black",

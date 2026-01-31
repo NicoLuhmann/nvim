@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	cond = not vim.g.vscode,
 	event = { "BufReadPre", "BufNewFile" },
 	opts = {
 		formatters_by_ft = {
@@ -14,7 +15,7 @@ return {
 			json = { "prettierd", "prettier", stop_after_first = true },
 			lua = { "stylua" },
 			python = { "isort", "black" },
-      sh = { "shfmt" },
+			sh = { "shfmt" },
 			xml = { "xmlformatter" },
 			yaml = { "prettierd", "prettier", stop_after_first = true },
 		},

@@ -1,7 +1,7 @@
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
 	cond = not vim.g.vscode,
+	event = "VeryLazy",
   opts = {
 	  presets = {
 		  bottom_search = true,

@@ -22,12 +22,6 @@ keymap.set({'n', 'v'}, '<leader>y', [["+y]])
 keymap.set({'n', 'v'}, '<leader>p', [["+p]])
 keymap.set({'n', 'v'}, '<leader>P', [["+P]])
 
-keymap.set("n", "n", "nzzv", opts)
-keymap.set("n", "N", "Nzzv", opts)
-keymap.set("n", "*", "*zzv", opts)
-keymap.set("n", "#", "#zzv", opts)
-keymap.set("n", "g*", "g*zz", opts)
-keymap.set("n", "g#", "g#zz", opts)
 if vim.g.vscode then
     local vscode = require("vscode")
 else

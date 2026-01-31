@@ -1,8 +1,8 @@
 return {
   "catppuccin/nvim",
+  cond = not vim.g.vscode,
   name = "catppuccin",
   priority = 1000,
-  cond = not vim.g.vscode,
   config = function()
     require("catppuccin").setup{
       integrations = {

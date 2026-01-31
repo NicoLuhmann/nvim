@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	cond = not vim.g.vscode,
 	branch = "main",
 	build = ":TSUpdate",
 	lazy = false,
